@@ -1,0 +1,293 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   ELEVATELAB INTERNSHIP - TASK 4: RESPONSIVE MEDIA QUERIES & FLUID STYLING
+   ==========================================================================
+   Breakpoints Covered:
+   1. Small Mobile:  <= 375px
+   2. Mobile:        <= 576px
+   3. Tablet (Port): <= 768px
+   4. Tablet (Land): <= 992px
+   5. Laptop:        <= 1200px
+   6. Desktop:       >= 1440px
+   ========================================================================== */
+
+:root {
+  --font-hero: clamp(2rem, 5vw + 1rem, 3.75rem);
+  --font-section: clamp(1.5rem, 3vw + 0.5rem, 2.5rem);
+  --font-card-title: clamp(1.125rem, 1.5vw + 0.5rem, 1.5rem);
+  --font-body: clamp(0.9375rem, 0.4vw + 0.85rem, 1.0625rem);
+  --font-muted: clamp(0.75rem, 0.3vw + 0.7rem, 0.875rem);
+  
+  --spacing-section-y: clamp(3rem, 6vw, 6rem);
+  --spacing-container-x: clamp(1rem, 4vw, 2.5rem);
+  
+  --touch-target-min: 44px;
+}
+
+/* Base HTML & Body Reset to Eliminate Horizontal Scroll */
+html {
+  box-sizing: border-box;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.6;
+  font-size: var(--font-body);
+}
+
+/* Responsive Image and Media Primitives */
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Touch-friendly buttons and interactive items */
+button, a, input, select, textarea {
+  touch-action: manipulation;
+}
+
+/* Fluid Typography Utilities */
+.text-fluid-hero {
+  font-size: var(--font-hero);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+.text-fluid-section {
+  font-size: var(--font-section);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.text-fluid-card {
+  font-size: var(--font-card-title);
+  line-height: 1.35;
+}
+
+.text-fluid-body {
+  font-size: var(--font-body);
+  line-height: 1.6;
+}
+
+/* Fluid Container with Safe Horizontal Insets */
+.elevate-container {
+  width: 100%;
+  max-width: 1320px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-container-x);
+  padding-right: var(--spacing-container-x);
+}
+
+/* Touch Target Enforcement for Mobile Compliance */
+.touch-target {
+  min-height: var(--touch-target-min);
+  min-width: var(--touch-target-min);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   EXPLICIT CSS MEDIA QUERIES (Task 4 Core Implementation)
+   ========================================================================== */
+
+/* 1. Large Desktop Screens (>= 1440px) */
+@media screen and (min-width: 1440px) {
+  .elevate-container {
+    max-width: 1380px;
+  }
+  
+  .elevate-grid-tracks {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .elevate-grid-projects {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+  }
+  
+  .hero-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 3.5rem;
+  }
+}
+
+/* 2. Standard Desktop / Laptop Screens (1200px - 1439px) */
+@media screen and (max-width: 1399px) and (min-width: 1200px) {
+  .elevate-container {
+    max-width: 1140px;
+  }
+  
+  .elevate-grid-tracks {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .elevate-grid-projects {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+/* 3. Laptop / Landscape Tablet Screens (992px - 1199px) */
+@media screen and (max-width: 1199px) {
+  .elevate-container {
+    max-width: 960px;
+  }
+
+  .elevate-grid-tracks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .elevate-grid-projects {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* 4. Tablet Portrait Screens (768px - 991px) */
+@media screen and (max-width: 991px) {
+  .elevate-container {
+    max-width: 720px;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .elevate-about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .elevate-stats-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.5rem;
+  }
+}
+
+/* 5. Mobile Landscape / Small Tablet (576px - 767px) */
+@media screen and (max-width: 767px) {
+  .elevate-container {
+    max-width: 540px;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .elevate-grid-tracks {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .elevate-grid-projects {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .hero-actions-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-actions-group > * {
+    width: 100%;
+  }
+
+  .form-row-two-col {
+    grid-template-columns: 1fr !important;
+  }
+
+  .elevate-stats-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* 6. Standard Mobile Screens (<= 576px) */
+@media screen and (max-width: 576px) {
+  .elevate-container {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .elevate-stats-strip {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .elevate-card-padded {
+    padding: 1.25rem;
+  }
+
+  .modal-responsive-card {
+    width: 95vw;
+    max-height: 90vh;
+    padding: 1.25rem;
+  }
+}
+
+/* 7. Small Mobile Screens (<= 375px) */
+@media screen and (max-width: 375px) {
+  .elevate-container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .elevate-btn-text-responsive {
+    font-size: 0.8125rem;
+    padding-left: 0.875rem;
+    padding-right: 0.875rem;
+  }
+
+  .text-fluid-hero {
+    font-size: 1.85rem;
+  }
+
+  .elevate-card-padded {
+    padding: 1rem;
+  }
+}
+
+/* Prevent unwanted horizontal overflow helper */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

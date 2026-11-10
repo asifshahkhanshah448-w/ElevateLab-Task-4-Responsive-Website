@@ -1,0 +1,6 @@
+{
+  "name": "ElevateLab - Mobile-Friendly Responsive Platform",
+  "description": "ElevateLab Web Development Internship Task 4: Comprehensive mobile-friendly responsive web platform engineered with precise CSS media queries across 375px, 576px, 768px, 992px, 1200px, and 1440px breakpoints.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
